@@ -51,7 +51,6 @@
           </p>
           <div class="scroll-hint">
             <p>Keep Scrolling ⬇️</p>
-            <button id="toggleMusicBtn" style="display: none;">🔇 Mute Music</button>
           </div>
         </div>
       </div>
@@ -60,6 +59,12 @@
     <!-- Surprise Section -->
     <section id="surprise" class="surprise">
       <h2>Your Favorite Song 💖</h2>
+      <div class="music-toggle-container" style="display: none;">
+        <p class="music-toggle-text">
+          🎶 Please click this & stop this background music to listen to your favourite song
+        </p>
+        <button id="toggleMusicBtn">🔇 Mute Music</button>
+      </div>
       <iframe
         id="spotify-embed"
         style="border-radius: 12px"
@@ -167,17 +172,18 @@
         bgMusic.play();
       }, 1000);
     });
-
+    
     const toggleMusicBtn = document.getElementById("toggleMusicBtn");
+    const musicToggleContainer = document.querySelector(".music-toggle-container");
+    
     startBtn.addEventListener("click", () => {
       bgMusic.play();
-      toggleMusicBtn.style.display = "inline-block"; // Show toggle button after intro
       introOverlay.style.opacity = "0";
-      
       setTimeout(() => {
         introOverlay.style.display = "none";
         mainContent.style.display = "block";
         mainContent.classList.add("fade-in");
+        musicToggleContainer.style.display = "block"; // Show text + button after intro
       }, 1000);
       
       confetti({
