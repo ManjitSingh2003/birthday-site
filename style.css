@@ -87,7 +87,7 @@ body {
 
 .text p {
   font-size: 1.1rem;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #555;
   animation: fadeIn 2s ease-in;
 }
