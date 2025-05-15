@@ -51,6 +51,7 @@
           </p>
           <div class="scroll-hint">
             <p>Keep Scrolling ⬇️</p>
+            <button id="toggleMusicBtn" style="display: none;">🔇 Mute Music</button>
           </div>
         </div>
       </div>
@@ -165,6 +166,36 @@
       setTimeout(() => {
         bgMusic.play();
       }, 1000);
+    });
+
+    const toggleMusicBtn = document.getElementById("toggleMusicBtn");
+    startBtn.addEventListener("click", () => {
+      bgMusic.play();
+      toggleMusicBtn.style.display = "inline-block"; // Show toggle button after intro
+      introOverlay.style.opacity = "0";
+      
+      setTimeout(() => {
+        introOverlay.style.display = "none";
+        mainContent.style.display = "block";
+        mainContent.classList.add("fade-in");
+      }, 1000);
+      
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 },
+      });
+    });
+    
+    // Toggle music play/pause
+    toggleMusicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        toggleMusicBtn.textContent = "🔇 Mute Music";
+      } else {
+        bgMusic.pause();
+        toggleMusicBtn.textContent = "🔊 Play Music";
+      }
     });
   </script>
 </body>
