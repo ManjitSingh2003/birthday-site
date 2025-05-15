@@ -320,3 +320,20 @@ footer {
     transform: translateY(10px);
   }
 }
+
+
+#toggleMusicBtn {
+  margin-top: 15px;
+  padding: 8px 18px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#toggleMusicBtn:hover {
+  background-color: #ff1493;
+}
