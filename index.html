@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Daphi 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Intro Overlay -->
+  <div id="intro-overlay">
+    <div class="intro-content">
+      <h1>🎂 Hey Birthday Girl! 🎂</h1>
+      <button id="startBtn">Click here 🎉</button>
+    </div>
+  </div>
+
+  <!-- Balloon Animation -->
+  <div class="balloon-container">
+    <div class="balloon red"></div>
+    <div class="balloon blue"></div>
+    <div class="balloon green"></div>
+    <div class="balloon yellow"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="bg-music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Main Content -->
+  <div id="main-content" style="display: none;">
+    <!-- Landing Section -->
+    <section class="landing">
+      <div class="content">
+        <img src="assets/her_image.jpg" alt="Daphi" class="daphi-img" />
+        <div class="text">
+          <h1>Happy Birthday, Daphi! 🎉</h1>
+          <p>
+            Today, the world celebrates someone truly special — you. <br>
+            Your smile, your kindness, and your spirit make everything brighter. <br>
+            I hope this day brings you as much joy as you bring to others. <br>
+            May your year ahead be filled with adventures, laughter, and beautiful memories. <br>
+            You deserve all the love, magic, and cake this world has to offer! 🎂🌸
+          </p>
+          <div class="scroll-hint">
+            <p>Keep Scrolling ⬇️</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Surprise Section -->
+    <section id="surprise" class="surprise">
+      <h2>Your Favorite Song 💖</h2>
+      <iframe
+        id="spotify-embed"
+        style="border-radius: 12px"
+        src="https://open.spotify.com/embed/track/2RttW7RAu5nOAfq6YFvApB?si=e6eef206a3af43f9&theme=0"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen=""
+        allowtransparency="true"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+
+      <div class="letter">
+        <h3>A Letter for You 💌</h3>
+        <p>
+          Dear Daphi,<br><br>
+          Today is all about you — a girl whose smile can light up the room and whose heart is even brighter. 
+          Every time you laugh, it feels like the world becomes a bit more beautiful. 
+          You’re kind, inspiring, and simply unforgettable. Watching you be you is something I’ll never get tired of. <br><br>
+          On this special day, I just want you to know how amazing you are — not just today, but every single day. 
+          I hope this birthday is as sweet and unforgettable as you. 
+          May all your dreams come true, and may happiness always find its way to you. <br><br>
+          With warmth and admiration,<br>
+          <b>Manjit</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Made with ❤️ by Manjit</p>
+      <p>365 days until the next Daphi Day!</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const introOverlay = document.getElementById("intro-overlay");
+    const mainContent = document.getElementById("main-content");
+    const bgMusic = document.getElementById("bg-music");
+    const spotifyEmbed = document.getElementById("spotify-embed");
+
+    startBtn.addEventListener("click", () => {
+      bgMusic.play();
+      introOverlay.style.opacity = "0";
+      setTimeout(() => {
+        introOverlay.style.display = "none";
+        mainContent.style.display = "block";
+        mainContent.classList.add("fade-in");
+      }, 1000);
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 },
+      });
+    });
+
+    spotifyEmbed.addEventListener("mouseenter", () => {
+      bgMusic.pause();
+    });
+
+    spotifyEmbed.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        bgMusic.play();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
