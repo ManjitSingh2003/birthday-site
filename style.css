@@ -322,16 +322,27 @@ footer {
 }
 
 
+.music-toggle-container {
+  margin-top: 20px;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.music-toggle-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
 #toggleMusicBtn {
-  margin-top: 15px;
-  padding: 8px 18px;
+  padding: 10px 20px;
   background-color: #ff69b4;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 #toggleMusicBtn:hover {
