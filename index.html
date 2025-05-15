@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,6 +98,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
+
     const startBtn = document.getElementById("startBtn");
     const introOverlay = document.getElementById("intro-overlay");
     const mainContent = document.getElementById("main-content");
@@ -111,6 +113,7 @@
         mainContent.style.display = "block";
         mainContent.classList.add("fade-in");
       }, 1000);
+
       confetti({
         particleCount: 150,
         spread: 100,
@@ -118,6 +121,42 @@
       });
     });
 
+    const backgroundMusic = document.getElementById("bg-music");
+    const spotifyArea = document.getElementById("spotify-embed"); // wrap your Spotify element in a div with this ID
+    
+    let isSpotifyPlaying = false;
+    
+    function pauseBackgroundMusic() {
+      if (!backgroundMusic.paused) {
+       backgroundMusic.pause();
+      }
+    }
+    
+    function resumeBackgroundMusic() {
+      if (!isSpotifyPlaying) {
+        backgroundMusic.play().catch((e) => {
+          console.warn("Autoplay prevented:", e);
+        });
+      }
+    }
+    
+    spotifyArea.addEventListener("mouseenter", pauseBackgroundMusic);
+    spotifyArea.addEventListener("mouseleave", resumeBackgroundMusic);
+    
+    spotifyArea.addEventListener("touchstart", pauseBackgroundMusic);
+    spotifyArea.addEventListener("touchend", resumeBackgroundMusic);
+    
+    const spotifyPlayer = document.getElementById("spotify-embed");
+    spotifyPlayer.addEventListener("play", () => {
+      isSpotifyPlaying = true;
+      pauseBackgroundMusic();
+    });
+    
+    spotifyPlayer.addEventListener("pause", () => {
+      isSpotifyPlaying = false;
+      resumeBackgroundMusic();
+    });
+    
     spotifyEmbed.addEventListener("mouseenter", () => {
       bgMusic.pause();
     });
